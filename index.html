@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<!--
+  MONTH 16. Har safhe pe tu. For gugluu, from gullaa.
+
+  FILES NEXT TO THIS ONE (same folder, same names, GitHub Pages is case sensitive):
+    a.jpeg ... i.jpeg   the nine photos
+    song.mp3            starts when she taps "open your book"
+
+  EDIT THE WORDS: everything she reads lives in the WORDS object at the bottom
+  (shayaris, "what i meant", the letter, the ending). Nothing else needs touching.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1A0A24">
+<title>Har safhe pe tu, for gugluu</title>
+<meta property="og:title" content="Har safhe pe tu">
+<meta property="og:description" content="Sixteen months. Ten shayaris. One book, only for you.">
+<meta property="og:image" content="https://yuguuvermaa.github.io/sixteen/c.jpeg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪔</text></svg>">
+<link rel="preload" href="fonts/cormorant-garamond-latin-600-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/rozha-one-devanagari-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Cormorant Garamond";src:url(fonts/cormorant-garamond-latin-600-normal.woff2) format("woff2");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"Cormorant Garamond";src:url(fonts/cormorant-garamond-latin-500-italic.woff2) format("woff2");font-weight:500;font-style:italic;font-display:swap}
+@font-face{font-family:"Cormorant Garamond";src:url(fonts/cormorant-garamond-latin-600-italic.woff2) format("woff2");font-weight:600;font-style:italic;font-display:swap}
+@font-face{font-family:"Lora";src:url(fonts/lora-latin-400-normal.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Lora";src:url(fonts/lora-latin-400-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Lora";src:url(fonts/lora-latin-500-italic.woff2) format("woff2");font-weight:500;font-style:italic;font-display:swap}
+@font-face{font-family:"Pinyon Script";src:url(fonts/pinyon-script-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Rozha One";src:url(fonts/rozha-one-devanagari-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+
+@property --bg1{syntax:"<color>";inherits:true;initial-value:#2A0F33}
+@property --bg2{syntax:"<color>";inherits:true;initial-value:#120822}
+@property --glow{syntax:"<color>";inherits:true;initial-value:#C2507A55}
+
+:root{
+  --display:"Cormorant Garamond","Iowan Old Style",Georgia,serif;
+  --body:"Lora",Georgia,"Times New Roman",serif;
+  --script:"Pinyon Script","Snell Roundhand","Apple Chancery",cursive;
+  --dev:"Rozha One","Kohinoor Devanagari","Noto Serif Devanagari",serif;
+
+  --gold:#EFC983;        /* champagne gold */
+  --rosegold:#E9A89B;
+  --blush:#F7C9CF;
+  --jasmine:#FBF1E6;     /* text */
+  --dim:#D9C6D2;         /* soft mauve text */
+  --sindoor:#E0424F;
+  --accent:#F29BB5;
+  --line:rgba(239,201,131,.35);
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --arch:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140' preserveAspectRatio='none'><path d='M0 140V54C0 28 24 15 50 0C76 15 100 28 100 54V140Z'/></svg>");
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+html,body{margin:0}
+body{
+  background:#120822;color:var(--jasmine);
+  font-family:var(--body);font-size:clamp(1.02rem,3.8vw,1.14rem);line-height:1.7;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
+}
+/* the night sky behind everything, recoloured per page */
+#backdrop{
+  position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(110vw 70vh at 50% 18%, var(--glow), transparent 68%),
+    radial-gradient(80vw 50vh at 85% 100%, color-mix(in srgb, var(--glow) 55%, transparent), transparent 70%),
+    linear-gradient(180deg,var(--bg1),var(--bg2));
+  transition:--bg1 1.8s var(--ease),--bg2 1.8s var(--ease),--glow 1.8s var(--ease);
+}
+#backdrop::after{content:"";position:absolute;inset:0;opacity:.35;mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
+body.locked{overflow:hidden;height:100%}
+.dev{font-family:var(--dev)}
+p{margin:0 0 1em}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:4px}
+.wrap{max-width:40rem;margin:0 auto;padding:0 1.5rem}
+
+/* ─────────── INTRO ─────────── */
+#intro{
+  position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:2rem 1.5rem;
+  background:radial-gradient(70vw 50vh at 50% 42%,#3A1235 0%,#14081C 60%,#0B0512 100%);
+  transition:opacity 1.4s var(--ease), visibility 1.4s;
+}
+#intro.gone{opacity:0;visibility:hidden}
+.clock{
+  font-family:var(--display);font-weight:600;font-variant-numeric:lining-nums tabular-nums;
+  font-size:clamp(4.4rem,22vw,8.5rem);letter-spacing:.01em;line-height:1;
+  color:rgba(251,241,230,.35);transition:color 1.4s, text-shadow 1.4s;
+}
+.clock .s{font-size:.36em;vertical-align:1em;margin-left:.12em;opacity:.7}
+.clock.hit{color:var(--gold);text-shadow:0 0 30px rgba(239,201,131,.6),0 0 80px rgba(233,168,155,.35)}
+.intro-lines{min-height:7.5em;margin-top:2rem;max-width:26rem}
+.intro-lines p{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(1.45rem,6vw,1.85rem);line-height:1.3;
+  color:var(--blush);margin:0 0 .35em;opacity:0;transform:translateY(6px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease)}
+.intro-lines p:last-child{color:var(--gold)}
+.intro-lines p.on{opacity:1;transform:none}
+#openBook{
+  margin-top:1.2rem;padding:.9rem 2rem;border-radius:999px;
+  background:linear-gradient(135deg,#F6D89A,#E9A89B);border:0;color:#2A0F24;
+  font-family:var(--display);font-weight:600;font-style:italic;font-size:1.3rem;
+  box-shadow:0 8px 30px rgba(233,168,155,.35);
+  opacity:0;pointer-events:none;transition:opacity 1s, transform .3s;
+}
+#openBook.on{opacity:1;pointer-events:auto}
+#openBook:hover{transform:translateY(-2px)}
+#skip{position:absolute;bottom:calc(1.2rem + env(safe-area-inset-bottom,0px));background:none;border:0;
+  color:rgba(251,241,230,.4);font-style:italic;font-size:.92rem}
+
+/* ─────────── music ─────────── */
+#music{
+  position:fixed;z-index:40;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom,0px));
+  width:2.9rem;height:2.9rem;border-radius:50%;
+  background:rgba(20,8,28,.6);border:1px solid var(--line);
+  display:grid;place-items:center;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+}
+#music .bars{display:flex;gap:3px;align-items:flex-end;height:14px}
+#music i{display:block;width:3px;height:4px;background:var(--gold);border-radius:1px}
+#music.playing i{animation:eq 1s ease-in-out infinite}
+#music.playing i:nth-child(2){animation-delay:.2s}
+#music.playing i:nth-child(3){animation-delay:.4s}
+@keyframes eq{0%,100%{height:4px}50%{height:14px}}
+
+/* ─────────── HERO ─────────── */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;padding:5rem 1.5rem 3.5rem;position:relative}
+.solah{
+  font-family:var(--dev);font-size:clamp(7rem,36vw,15rem);line-height:1.15;margin:0;
+  background:linear-gradient(175deg,#FFF1CF 0%,#F2CD84 35%,#E9A89B 70%,#B8706A 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 34px rgba(239,201,131,.35));
+}
+.hero h1{font-family:var(--display);font-weight:600;font-style:italic;font-size:clamp(2.1rem,8.6vw,3.4rem);
+  line-height:1.08;margin:.2rem 0 1.8rem;color:var(--jasmine)}
+.hero h1 span{font-family:var(--script);font-style:normal;font-weight:400;color:var(--blush);font-size:1.25em;display:block;margin-top:.1em}
+.counter{display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem 1.2rem}
+.counter div{display:flex;flex-direction:column;align-items:center;min-width:2.8rem}
+.counter b{font-family:var(--display);font-weight:600;font-variant-numeric:lining-nums tabular-nums;font-size:clamp(1.9rem,7.2vw,2.6rem);line-height:1.05;color:var(--gold)}
+.counter span{font-size:.8rem;font-style:italic;color:var(--dim)}
+.since{font-style:italic;color:var(--dim);font-size:.95rem;margin-top:1.2rem;max-width:22rem}
+.cue{position:absolute;bottom:calc(1.6rem + env(safe-area-inset-bottom,0px));left:50%;
+  width:1px;height:46px;background:linear-gradient(var(--gold),transparent);animation:cue 2.4s ease-in-out infinite;transform-origin:top}
+@keyframes cue{0%,100%{opacity:.2;transform:translateX(-50%) scaleY(.6)}50%{opacity:1;transform:translateX(-50%) scaleY(1)}}
+#late{font-style:italic;color:var(--gold);margin-top:1.2rem;display:none}
+
+/* ─────────── promise kept ─────────── */
+.kept{padding:6rem 1.5rem 4rem;text-align:center}
+.kept .old{
+  display:inline-block;text-align:left;padding:1.1rem 1.4rem;margin-bottom:2.2rem;
+  background:rgba(251,241,230,.06);border:1px dashed rgba(247,201,207,.35);border-radius:6px;
+  color:var(--dim);font-size:.95rem;transform:rotate(-1.5deg)
+}
+.kept .old em{display:block;font-family:var(--display);font-weight:600;color:var(--jasmine);font-size:1.4rem;margin-top:.2rem}
+.kept .now{font-family:var(--display);font-weight:500;font-style:italic;font-size:clamp(1.6rem,6.4vw,2.2rem);line-height:1.3;color:var(--blush)}
+
+.orn{display:block;width:44px;height:44px;margin:3rem auto;color:var(--gold);opacity:.85}
+
+/* ─────────── DIWAN ─────────── */
+.diwan-head{text-align:center;padding:3rem 1.5rem 1rem}
+.diwan-head h2{font-family:var(--script);font-weight:400;font-size:clamp(3.4rem,15vw,6rem);line-height:1.1;margin:0 0 1rem;
+  background:linear-gradient(175deg,#FFF1CF,#F2CD84 45%,#E9A89B);-webkit-background-clip:text;background-clip:text;color:transparent;
+  padding:0 .15em}
+.diwan-head p{color:var(--dim);font-style:italic;max-width:27rem;margin:0 auto}
+
+.safha{position:relative;display:grid;gap:2.2rem;align-items:center;max-width:62rem;margin:0 auto;padding:5rem 1.5rem}
+@media (min-width:860px){
+  .safha{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:4.5rem;padding:8rem 2.5rem}
+  .safha:nth-of-type(even) figure{order:2}
+}
+.arch{
+  position:relative;width:min(76vw,23rem);aspect-ratio:100/140;margin:0 auto;padding:5px;
+  background:linear-gradient(160deg,#FFE9BD,var(--accent) 55%,#8C5A55);
+  -webkit-mask:var(--arch) center/100% 100% no-repeat;mask:var(--arch) center/100% 100% no-repeat;
+  filter:drop-shadow(0 20px 40px rgba(0,0,0,.45));
+}
+.arch img{width:100%;height:100%;object-fit:cover;display:block;
+  -webkit-mask:var(--arch) center/100% 100% no-repeat;mask:var(--arch) center/100% 100% no-repeat;
+  transform:scale(1.07);filter:saturate(.5) brightness(.65);transition:transform 2.4s var(--ease),filter 2.4s var(--ease)}
+.safha.seen .arch img{transform:none;filter:saturate(1.05)}
+.arch.empty{background:linear-gradient(160deg,#FFE9BD,var(--accent) 55%,#8C5A55)}
+.arch.empty .inner{
+  width:100%;height:100%;display:grid;place-items:center;text-align:center;padding:3rem 1.6rem 2rem;
+  -webkit-mask:var(--arch) center/100% 100% no-repeat;mask:var(--arch) center/100% 100% no-repeat;
+  background:radial-gradient(circle at 50% 45%,#4A2A1E,#1E0F14 75%);
+}
+.arch.empty .inner span{font-family:var(--script);color:var(--gold);font-size:2.1rem;line-height:1.35}
+.cap{text-align:center;font-style:italic;color:var(--dim);font-size:.92rem;margin-top:.9rem}
+
+.text .num{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
+.text .num .dev{font-size:3rem;line-height:1;color:var(--accent);text-shadow:0 0 24px color-mix(in srgb,var(--accent) 50%,transparent)}
+.text .num em{font-size:.92rem;color:var(--dim)}
+.sher{margin:0 0 1.9rem;padding:0;list-style:none}
+.sher li{
+  font-family:var(--display);font-weight:600;font-style:italic;
+  font-size:clamp(1.5rem,6vw,1.95rem);line-height:1.3;margin:0 0 .5rem;color:var(--jasmine);
+  opacity:0;transform:translateY(10px);filter:blur(5px);
+  transition:opacity 1.3s var(--ease),transform 1.3s var(--ease),filter 1.3s var(--ease);
+}
+.sher li:last-child{color:var(--accent)}
+.safha.seen .sher li{opacity:1;transform:none;filter:none}
+.meant{position:relative;padding:1.1rem 1.2rem 1.1rem 1.3rem;border-radius:4px;
+  background:rgba(251,241,230,.05);border-left:2px solid var(--accent);
+  color:var(--dim);font-size:1rem;line-height:1.72;opacity:0;transition:opacity 1.4s var(--ease) 2.8s}
+.safha.seen .meant{opacity:1}
+.meant b{display:block;font-family:var(--script);font-weight:400;font-size:1.7rem;line-height:1;color:var(--accent);margin-bottom:.45rem}
+
+/* ─────────── HEARTBEAT ─────────── */
+.pulse{min-height:92svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4rem 1.5rem}
+.pulse h3{font-family:var(--display);font-weight:600;font-style:italic;font-size:clamp(1.9rem,7.6vw,2.7rem);margin:0 0 2.4rem;line-height:1.15;color:var(--blush)}
+#holdBtn{position:relative;width:9.5rem;height:9.5rem;border-radius:50%;border:0;background:none;
+  touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+#holdBtn svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+#holdBtn .core{position:absolute;inset:14%;border-radius:50%;
+  background:radial-gradient(circle at 38% 32%,#FF8A8F,#E0424F 50%,#7A1426);
+  box-shadow:0 0 60px rgba(224,66,79,.55),inset 0 -8px 20px rgba(0,0,0,.25);display:grid;place-items:center;
+  font-family:var(--script);font-size:1.9rem;color:#FFF0EC}
+#holdBtn.holding .core{animation:lubdub .833s infinite}
+body.beat::before{content:"";position:fixed;inset:0;z-index:30;pointer-events:none;
+  background:radial-gradient(circle at 50% 55%,rgba(224,66,79,.35),transparent 60%);animation:lubdubbg .833s infinite}
+@keyframes lubdub{0%{transform:scale(1)}12%{transform:scale(1.13)}24%{transform:scale(1.02)}36%{transform:scale(1.09)}60%,100%{transform:scale(1)}}
+@keyframes lubdubbg{0%,60%,100%{opacity:.25}12%{opacity:1}24%{opacity:.5}36%{opacity:.85}}
+.beatout{margin-top:2.4rem;max-width:28rem;opacity:0;transition:opacity 1.4s var(--ease)}
+.beatout.on{opacity:1}
+.beatout p{color:var(--dim)}
+.beatout .big{font-family:var(--display);font-weight:600;font-variant-numeric:lining-nums tabular-nums;font-size:clamp(2.8rem,13vw,4.4rem);color:var(--gold);line-height:1.05;display:block;margin:.3rem 0 .6rem}
+.beatout .last{font-family:var(--script);color:var(--blush);font-size:2.4rem;line-height:1.2;margin-top:1rem}
+.hint{font-style:italic;color:var(--dim);font-size:.92rem;margin-top:1.4rem}
+
+/* ─────────── LETTER ─────────── */
+.letter-sec{padding:5rem 1.5rem 6rem}
+.envelope{max-width:34rem;margin:0 auto;text-align:center}
+#openLetter{width:100%;max-width:22rem;aspect-ratio:1.55;margin:0 auto;display:block;position:relative;border:0;border-radius:8px;
+  background:linear-gradient(165deg,#F6E3CF,#E8C9B6);box-shadow:0 24px 60px rgba(0,0,0,.45)}
+#openLetter::before{content:"";position:absolute;inset:0;border-radius:8px;
+  background:linear-gradient(to bottom right,transparent 49.5%,rgba(120,60,50,.28) 50%,transparent 50.5%),
+             linear-gradient(to bottom left,transparent 49.5%,rgba(120,60,50,.28) 50%,transparent 50.5%);
+  -webkit-mask:linear-gradient(#000 0 60%,transparent 60%);mask:linear-gradient(#000 0 60%,transparent 60%)}
+#openLetter .seal{position:absolute;left:50%;top:56%;transform:translate(-50%,-50%);width:4.2rem;height:4.2rem;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#F0616B,#9C1A2A);display:grid;place-items:center;
+  color:#FFE2B0;font-family:var(--script);font-size:2.2rem;box-shadow:0 4px 18px rgba(80,0,10,.45)}
+#openLetter .lbl{position:absolute;bottom:.7rem;left:0;right:0;font-style:italic;color:#7A4A44;font-size:.92rem}
+.letter{max-width:34rem;margin:0 auto;text-align:left;display:none;padding:2.2rem 1.6rem;border-radius:8px;
+  background:linear-gradient(170deg,#FBEEDD,#F1DCC8);color:#3A1C22;box-shadow:0 30px 70px rgba(0,0,0,.5)}
+.letter.on{display:block;animation:unfold 1.4s var(--ease)}
+@keyframes unfold{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
+.letter .to{font-family:var(--script);font-size:2.6rem;line-height:1.1;color:#A0303C;margin-bottom:1rem}
+.letter p{font-size:clamp(1.02rem,3.9vw,1.12rem);line-height:1.8}
+.letter .sign{margin-top:2rem;font-style:italic}
+.letter .sign span{display:block;font-family:var(--script);font-style:normal;font-size:3rem;line-height:1.1;color:#A0303C}
+
+/* ─────────── SKY ─────────── */
+.sky{position:relative;min-height:100svh;overflow:hidden}
+.sky-head{position:relative;z-index:2;text-align:center;padding:4.5rem 1.5rem 0;pointer-events:none}
+.sky-head h2{font-family:var(--display);font-weight:600;font-style:italic;font-size:clamp(2.1rem,8.4vw,3.2rem);margin:0 0 .6rem;line-height:1.1;color:var(--jasmine)}
+.sky-head p{color:var(--dim);font-style:italic;margin:0 auto;max-width:25rem;font-size:.95rem}
+#skyCanvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y}
+#tip{position:absolute;z-index:3;pointer-events:none;padding:.45rem .85rem;border-radius:6px;
+  background:rgba(12,8,30,.92);border:1px solid var(--line);font-size:.9rem;font-style:italic;
+  white-space:nowrap;opacity:0;transform:translate(-50%,-130%);transition:opacity .25s}
+#tip.on{opacity:1}
+#joinBtn{position:absolute;z-index:3;left:50%;bottom:calc(3rem + env(safe-area-inset-bottom,0px));transform:translateX(-50%);
+  padding:.9rem 1.9rem;border-radius:999px;border:0;background:linear-gradient(135deg,#F6D89A,#E9A89B);
+  color:#2A0F24;font-family:var(--display);font-weight:600;font-style:italic;font-size:1.25rem;white-space:nowrap;
+  box-shadow:0 8px 30px rgba(233,168,155,.35);transition:opacity .8s}
+#joinBtn.done{opacity:0;pointer-events:none}
+#skyOut{position:absolute;z-index:3;left:0;right:0;bottom:calc(2.4rem + env(safe-area-inset-bottom,0px));
+  text-align:center;padding:0 1.5rem;opacity:0;transition:opacity 1.6s var(--ease) .8s;pointer-events:none}
+#skyOut.on{opacity:1}
+#skyOut p{font-family:var(--script);font-size:clamp(2rem,8vw,2.8rem);line-height:1.2;color:var(--blush);margin:0}
+
+/* ─────────── FINALE ─────────── */
+.finale{padding:7rem 1.5rem 9rem;text-align:center}
+.finale .l{font-family:var(--display);font-weight:600;font-style:italic;font-size:clamp(1.6rem,6.6vw,2.3rem);line-height:1.28;margin:0 auto 1.5rem;max-width:30rem;color:var(--jasmine)}
+.finale .l:first-child{color:var(--gold)}
+.next{margin:4rem auto 0;max-width:22rem;padding:1.6rem 1.4rem;border-radius:8px;background:rgba(251,241,230,.06);border:1px solid var(--line)}
+.next .t{color:var(--dim);font-style:italic;font-size:.95rem;margin:0}
+.next .d{font-family:var(--display);font-weight:600;font-size:1.6rem;line-height:1.2;color:var(--gold);margin:.3rem 0 .4rem}
+.next .u{font-variant-numeric:lining-nums tabular-nums;font-size:1rem;margin:0}
+.from{margin-top:4rem;font-style:italic;color:var(--dim)}
+.from span{display:block;font-family:var(--script);font-style:normal;font-size:3.4rem;line-height:1.2;color:var(--gold)}
+
+.fade{opacity:0;transform:translateY(12px);transition:opacity 1.3s var(--ease),transform 1.3s var(--ease)}
+.fade.seen{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
+}
+</style>
+
+</head>
+<body class="locked">
+<div id="backdrop" aria-hidden="true"></div>
+
+<!-- INTRO -->
+<div id="intro" role="dialog" aria-label="Opening">
+  <div class="clock" id="clock" aria-live="off">01:19<span class="s" id="clockS">54</span></div>
+  <div class="intro-lines" id="introLines">
+    <p>every month, at this exact minute,</p>
+    <p>something happens to me.</p>
+    <p>this is the sixteenth time.</p>
+  </div>
+  <button id="openBook">open your book</button>
+  <button id="skip">skip</button>
+</div>
+
+<button id="music" aria-label="Play or pause our song"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span></button>
+<audio id="song" src="song.mp3" loop preload="auto"></audio>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" data-bg="hero">
+    <p class="solah" lang="hi" aria-label="Sixteen">सोलह</p>
+    <h1>sixteen months of you,<span>meri gugluu</span></h1>
+    <div class="counter" id="counter" aria-label="Time together"></div>
+    <p class="since">since 01:20 am, 25 may 2025. still counting. never stopping.</p>
+    <p id="late"></p>
+    <span class="cue" aria-hidden="true"></span>
+  </section>
+
+  <!-- PROMISE KEPT -->
+  <section class="kept fade" data-bg="hero">
+    <div class="old">
+      last month's page ended like this:
+      <em>Month sixteen. It is set. It repeats.</em>
+    </div>
+    <p class="now">it came. like i said it would.<br>and like every month before it,<br>i loved you more than the last.</p>
+  </section>
+
+  <svg class="orn" viewBox="0 0 44 44" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1"><rect x="10" y="10" width="24" height="24"/><rect x="10" y="10" width="24" height="24" transform="rotate(45 22 22)"/><circle cx="22" cy="22" r="4" fill="currentColor"/></g></svg>
+
+  <!-- DIWAN -->
+  <section class="diwan-head fade" data-bg="diwan">
+    <h2>Har safhe pe tu</h2>
+    <p>ten shayaris i wrote for you, and under each one, what i was really trying to say. read slowly. this book only has one reader.</p>
+  </section>
+
+  <div id="diwan"></div>
+
+  <!-- LETTER -->
+  <section class="letter-sec" data-bg="letter">
+    <div class="envelope">
+      <button id="openLetter" aria-expanded="false" aria-controls="letter">
+        <span class="seal" aria-hidden="true">&amp;</span>
+        <span class="lbl">tap to open</span>
+      </button>
+      <article class="letter" id="letter"></article>
+    </div>
+  </section>
+
+  <!-- SKY -->
+  <section class="sky" id="sky" data-bg="sky">
+    <div class="sky-head">
+      <h2 id="skyTitle">every star is a day with you.</h2>
+      <p>tap any of them. the bright ones are our 25ths. the one that glows red is today.</p>
+    </div>
+    <canvas id="skyCanvas" aria-label="A sky with one star for every day together"></canvas>
+    <div id="tip"></div>
+    <button id="joinBtn">join all our days</button>
+    <div id="skyOut"><p id="skyOutText"></p></div>
+  </section>
+
+  <!-- FINALE -->
+  <section class="finale" id="finale" data-bg="finale"></section>
+</main>
+
+<script>
+/* ═════════════════════════════════════════════════════════════════
+   WORDS. Everything she reads. Edit freely.
+   ═════════════════════════════════════════════════════════════════ */
+var WORDS = {
+  shayari: [
+    { img:"a.jpeg", pos:"50% 30%", cap:"in every crowd, this face",
+      lines:["Gugluuu, aapme hi meri har dua ka jawaab milta hai,","Har bheed mein bas aapka hi chehra be-hisaab dikhta hai.","Log poochte hain mohabbat kitni hai tujhe usse,","Main muskura ke kehta hoon, jitni saans... utni, hisaab kahaan banta hai."],
+      meant:"People ask me how much. I have never had a number for you. You are not something I measure, you are the thing I breathe with. And in every crowd since that metro, my eyes do the same thing without asking me first. They look for you." },
+
+    { img:"d.jpeg", pos:"50% 50%", cap:"the slowest, best part of any drive",
+      lines:["Babyyy, aap paas ho toh waqt bhi dheere chalne lagta hai,","Aur door ho toh har pal sadiyon sa lagta hai.","Mujhe jannat ki zarurat hi kya hai,","Jab meri duniya ka har raasta sirf aapke ghar tak jaata hai."],
+      meant:"Your hand on mine on these drives, that is what I mean by time slowing down. When you are next to me an evening lasts forever and still ends too soon. When you are not, one afternoon feels like a year. I don't need heaven. I already know where every road I take ends up." },
+
+    { img:"b.jpeg", pos:"50% 55%", cap:"you hide your face when you laugh too hard",
+      lines:["Cutiee, aapki hasi pe toh poori kaynaat qurbaan kar doon,","Apni har adhuri khwahish aapke naam kar doon.","Bas ek baar yun hi keh dena, \"aap ho na\",","Main poori duniya se lad ke bhi sirf aapka ho jaaun."],
+      meant:"Look at this photo. You laughed so hard you had to cover your face, and I am standing next to you looking like I just won something. I did. Say \"tu hai na\" to me once, just once, and I will take on the whole world and still come home only yours." },
+
+    { img:"g.jpeg", pos:"50% 40%", cap:"the eyes i learned everything from",
+      lines:["Gugluuu, mohabbat ka matlab log kitaabon mein dhoondte rahe,","Main bas aapki aankhon mein padhta gaya.","Aur ajeeb baat dekh,","Jitna aapko samajhta gaya... utna khud ko bhoolta gaya."],
+      meant:"Everyone else went looking for love in books. I just kept reading you. And the strange part is, the more I understood you, the less I remembered the boy I was before you. I don't miss him. He didn't know you yet." },
+
+    { img:"c.jpeg", pos:"50% 35%", cap:"cheek to cheek, heart to heart",
+      lines:["Babyyy, agar kabhi meri khamoshi samajh aaye na,","Toh usmein bhi aapka hi naam milega.","Meri har dhadkan ki zubaan sirf itna kehti hai,","\"ananass hai toh sab hai... warna sab adhoora milega.\""],
+      meant:"If I ever go quiet on you, listen closer. Your name is in the silence too. My heartbeat only knows one sentence, and I wrote it down for you here so you can hear it once. Keep scrolling." },
+
+    { img:"i.jpeg", pos:"45% 55%", cap:"the night the lights looked at you",
+      lines:["Cutiee, chand bhi sharma jaaye aapki saadgi dekh kar,","Phool bhi mehakna bhool jaaye aapki muskaan dekh kar.","Aur main...?","Main toh roz naya ishq kar leta hoon, bas aapko ek baar dekh kar."],
+      meant:"That night, that dress, all those lights hanging in the tree, and somehow you were still the brightest thing there. The moon would get shy. The flowers would forget. And me, I fall in love again every single day. It only takes looking at you once." },
+
+    { img:"f.jpeg", pos:"55% 72%", cap:"me, not even pretending to look at the camera",
+      lines:["Gugluuu, aapke saath buddhe hone ka khwaab rakhta hoon,","Har jhagde ke baad aur zyada pyaar ka hisaab rakhta hoon.","Log kehte hain ishq waqt ke saath kam ho jaata hai,","Main toh har guzarte din ke saath aapka naya deewana banta hoon."],
+      meant:"Every fight we have ever had ended the same way, with us closer than before. That is the only math I keep. People say love gets smaller with time. Mine keeps finding new ways to be crazy about you. I want grey hair with you. I want this exact look on my face at eighty." },
+
+    { img:"h.jpeg", pos:"50% 50%", cap:"what sukoon looks like",
+      lines:["Babyyy, duaon mein maanga tha sukoon,","Khuda ne aapka naam likh diya.","Maine maanga tha sirf ek saath,","Usne poori zindagi ka armaan likh diya."],
+      meant:"I asked for peace and got you, chin on your hands, smiling at me like that. I asked for one person to walk with and got a whole life of wanting to walk with only you. I think about how lucky that was every day." },
+
+    { img:"e.jpeg", pos:"60% 45%", cap:"even when i'm not in the photo, i'm there",
+      lines:["Cutiee, aapke bina bhi jee toh lunga shayad...","Par us jeene mein zindagi kahaan hogi?","Saans chalti rahegi bas aadat ki tarah,","Par rooh toh sirf aapke paas hi hogi."],
+      meant:"This one is the hardest to write, so I kept it simple. Without you I would probably keep breathing, out of habit. But the part of me that is actually me already lives with you. It moved in a long time ago. It is not moving out." },
+
+    { img:"", cap:"",
+      lines:["Gugluuu, agar kabhi meri kahaani likhi jaaye na,","Har safhe pe aapka hi zikr hoga.","Naam chahe mera likha ho upar,","Par har lafz ke beech sirf aapka hi ishq hoga."],
+      meant:"This is the last page of this book, and nowhere near the last page of us. My name might be on the cover of my story, but you are in every line of it. You are the reason there is a story at all." }
+  ],
+
+  letter: {
+    to: "Meri gugluu,",
+    body: [
+      "Sixteen months. I keep noticing something. The 25th doesn't feel like a date anymore. It feels like a place I go back to, and every time I get there, you are already waiting for me.",
+      "March 2025, the metro. I said everything at once, badly, too fast, and you just let me finish. Then 01:20 am on 25 May, and nothing after it has been the same. Sometimes I think about the boy I was before that. He had no idea someone would ask him if he had eaten before asking anything else, even while she was angry with him. He had no idea what it feels like to sit completely still so the person asleep on his shoulder can sleep a little longer.",
+      "You taught me that love isn't the loud part. It's the telling. When something hurt you, you never went quiet and disappeared on me. You told me. Every time. I know now how much braver that is than leaving, and I want to be that brave for you, always.",
+      "I know I'm clingy. I know I stretch every word when I text you, loveee, babyyy, jaannn. I'm never fixing it. Every extra letter is just me not wanting the word to end.",
+      "So here is what I promise, sixteen months in. I will keep choosing you on the easy days and fighting for us on the hard ones. I will keep making you laugh until you hide your face. You get louder about my small wins than I do, so I am going to spend my whole life being louder about yours. And I will keep writing you books like this one, until we run out of shelves.",
+      "Ananya hai toh sab hai. I put it in a shayari, but it isn't poetry. It's just the truest sentence I know."
+    ],
+    closing: "Tumhara, hamesha,",
+    sign: "gullaa"
+  },
+
+  finale: [
+    "Happiestttt 16 monthsss, meri jaannn ❤️💗",
+    "you are my dua, my sukoon, my every raasta, my wifey 🧿",
+    "one book down. a lifetime of pages left, and i want to write every single one of them with youuu 💍🥹"
+  ]
+};
+
+/* ═════════════════════════════════════════════════════════════════ */
+var START = new Date('2025-05-25T01:20:00+05:30');
+var PAGE = ['#F29BB5','#C7A6F2','#F6A55A','#9DB4FF','#FF7A86','#F3D08A','#FFB38A','#F7B7C8','#C9C3E6','#F5C97A'];
+var DEV = ['१','२','३','४','५','६','७','८','९','१०'];
+var WORDNUM = ['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty','twenty one','twenty two','twenty three','twenty four','twenty five'];
+var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function $(id){return document.getElementById(id)}
+function pad(n){return String(n).padStart(2,'0')}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+
+/* ---- build the diwan ---- */
+(function(){
+  var out = '';
+  WORDS.shayari.forEach(function(s,i){
+    var photo = s.img
+      ? '<figure style="margin:0"><div class="arch"><img src="'+s.img+'" alt="" loading="lazy" style="object-position:'+s.pos+'"></div><figcaption class="cap">'+esc(s.cap)+'</figcaption></figure>'
+      : '<figure style="margin:0"><div class="arch empty"><div class="inner"><span>this page<br>is you.<br>so are<br>all the others.</span></div></div></figure>';
+    var lines = s.lines.map(function(l,j){return '<li style="transition-delay:'+(j*0.55)+'s">'+esc(l)+'</li>'}).join('');
+    out += '<section class="safha" data-bg="p'+(i+1)+'" style="--accent:'+PAGE[i]+'" aria-label="Shayari '+(i+1)+'">'+photo+
+      '<div class="text"><div class="num"><span class="dev" aria-hidden="true">'+DEV[i]+'</span><em>safha '+(i+1)+' of 10</em></div>'+
+      '<ul class="sher">'+lines+'</ul>'+
+      '<div class="meant"><b>what i meant</b>'+esc(s.meant)+'</div></div></section>';
+  });
+  $('diwan').innerHTML = out;
+})();
+</script>
+<script>
+(function(){
+  /* heartbeat section, inserted right after safha 5 (the dhadkan one) */
+  var pulse =
+    '<section class="pulse" aria-label="Heartbeat" data-bg="pulse">'+
+      '<h3>put your finger here.<br>and hold it.</h3>'+
+      '<button id="holdBtn" aria-label="Press and hold">'+
+        '<svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="47" fill="none" stroke="rgba(239,201,131,.2)" stroke-width="1.5"/>'+
+        '<circle id="ring" cx="50" cy="50" r="47" fill="none" stroke="#EFC983" stroke-width="2" stroke-dasharray="295.3" stroke-dashoffset="295.3" stroke-linecap="round"/></svg>'+
+        '<span class="core">hold</span>'+
+      '</button>'+
+      '<p class="hint" id="holdHint">keep holding</p>'+
+      '<div class="beatout" id="beatOut" aria-live="polite">'+
+        '<p>that is what it does every time you are near me. since 01:20 am, 25 may 2025, it has beaten about</p>'+
+        '<span class="big" id="beats">0</span>'+
+        '<p>times. and every single one of them said the same thing.</p>'+
+        '<p class="last">ananya hai toh sab hai</p>'+
+      '</div>'+
+    '</section>';
+  var diwan = $('diwan');
+  var pages = diwan.querySelectorAll('.safha');
+  var holder = document.createElement('div');
+  holder.innerHTML = pulse;
+  pages[4].after(holder.firstChild);
+})();
+</script>
+<script>
+(function(){
+  /* ---------- letter ---------- */
+  var L = WORDS.letter;
+  $('letter').innerHTML = '<p class="to">'+esc(L.to)+'</p>'+L.body.map(function(p){return '<p>'+esc(p)+'</p>'}).join('')+
+    '<p class="sign">'+esc(L.closing)+'<span>'+esc(L.sign)+'</span></p>';
+  $('openLetter').addEventListener('click',function(){
+    this.style.display='none'; this.setAttribute('aria-expanded','true');
+    $('letter').classList.add('on');
+    $('letter').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+  });
+
+  /* ---------- finale ---------- */
+  $('finale').innerHTML = WORDS.finale.map(function(l){return '<p class="l fade">'+esc(l)+'</p>'}).join('')+
+    '<div class="next fade"><p class="t">already on the calendar</p><p class="d" id="nextD"></p><p class="u" id="nextU"></p></div>'+
+    '<p class="from fade">yours, in every month and every book,<span>gullaa</span></p>';
+
+  /* ---------- time ---------- */
+  function monthsSince(now){
+    var m=(now.getUTCFullYear()-START.getUTCFullYear())*12+(now.getUTCMonth()-START.getUTCMonth());
+    var a=addMonths(START,m); if(a>now){m--;a=addMonths(START,m)} return {m:m,anchor:a};
+  }
+  function addMonths(d,m){var x=new Date(d.getTime());x.setUTCMonth(x.getUTCMonth()+m);return x}
+  function tick(){
+    var now=new Date(), r=monthsSince(now), diff=Math.floor((now-r.anchor)/1000);
+    var d=Math.floor(diff/86400), h=Math.floor(diff%86400/3600), mi=Math.floor(diff%3600/60), s=diff%60;
+    $('counter').innerHTML=
+      '<div><b>'+r.m+'</b><span>months</span></div><div><b>'+d+'</b><span>days</span></div>'+
+      '<div><b>'+pad(h)+'</b><span>hours</span></div><div><b>'+pad(mi)+'</b><span>minutes</span></div><div><b>'+pad(s)+'</b><span>seconds</span></div>';
+    var next=addMonths(START,r.m+1), left=Math.max(0,Math.floor((next-now)/1000));
+    $('nextD').textContent='month '+(WORDNUM[r.m+1]||(r.m+1))+', 25 '+next.toLocaleString('en-GB',{month:'long',timeZone:'Asia/Kolkata'}).toLowerCase()+' '+next.getUTCFullYear()+', 01:20 am';
+    $('nextU').textContent=Math.floor(left/86400)+' days, '+pad(Math.floor(left%86400/3600))+' h, '+pad(Math.floor(left%3600/60))+' m, '+pad(left%60)+' s to go';
+    var b=$('beats'); if(b) b.textContent=Math.floor((now-START)/1000*1.2).toLocaleString('en-IN');
+  }
+  tick(); setInterval(tick,1000);
+
+  /* opened during 01:20 to 01:29 IST? */
+  var ist=new Date(Date.now()+330*60000);
+  if(ist.getUTCHours()===1 && ist.getUTCMinutes()>=20 && ist.getUTCMinutes()<30){
+    $('late').style.display='block';
+    $('late').textContent='you opened this at 01:'+pad(ist.getUTCMinutes())+' am. of course you did.';
+  }
+
+  /* ---------- intro ---------- */
+  var intro=$('intro'), clock=$('clock'), cs=$('clockS'), lines=$('introLines').children;
+  function endIntro(){
+    intro.classList.add('gone'); document.body.classList.remove('locked');
+    playSong();
+  }
+  function runIntro(){
+    if(reduce){clock.innerHTML='01:20';clock.classList.add('hit');[].forEach.call(lines,function(p){p.classList.add('on')});$('openBook').classList.add('on');return}
+    var s=54;
+    var t=setInterval(function(){
+      s++;
+      if(s<60){cs.textContent=pad(s);return}
+      clearInterval(t); clock.innerHTML='01:20'; clock.classList.add('hit');
+      [].forEach.call(lines,function(p,i){setTimeout(function(){p.classList.add('on')},900+i*1500)});
+      setTimeout(function(){$('openBook').classList.add('on')},900+lines.length*1500+400);
+    },1000);
+  }
+  runIntro();
+  $('openBook').addEventListener('click',endIntro);
+  $('skip').addEventListener('click',endIntro);
+
+  /* ---------- music ---------- */
+  var song=$('song'), mb=$('music');
+  function playSong(){
+    song.volume=0; var p=song.play();
+    if(p&&p.then){p.then(function(){mb.classList.add('playing');fade(0,.8)}).catch(function(){})}
+  }
+  function fade(from,to){var v=from,st=(to-from)/30,k=setInterval(function(){v+=st;song.volume=Math.min(1,Math.max(0,v));if((st>0&&v>=to)||(st<0&&v<=to))clearInterval(k)},80)}
+  mb.addEventListener('click',function(){
+    if(song.paused){song.play().then(function(){mb.classList.add('playing');song.volume=.8}).catch(function(){})}
+    else{song.pause();mb.classList.remove('playing')}
+  });
+
+  /* ---------- reveals ---------- */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('seen');io.unobserve(e.target)}})},{threshold:.28});
+  document.querySelectorAll('.safha,.fade').forEach(function(el){io.observe(el)});
+
+  /* ---------- heartbeat hold ---------- */
+  var hb=$('holdBtn'), ring=$('ring'), hint=$('holdHint'), prog=0, raf=null, vib=null, last=0, done=false, NEED=3200;
+  function frame(t){
+    if(!last) last=t; prog=Math.min(NEED,prog+(t-last)); last=t;
+    ring.style.strokeDashoffset=295.3*(1-prog/NEED);
+    if(prog>=NEED && !done){done=true;$('beatOut').classList.add('on');hint.textContent='you can let go. it won\u2019t stop.'}
+    raf=requestAnimationFrame(frame);
+  }
+  function down(e){
+    e.preventDefault(); hb.classList.add('holding'); document.body.classList.add('beat'); hint.style.opacity=1;
+    last=0; raf=requestAnimationFrame(frame);
+    if(navigator.vibrate){navigator.vibrate([70,130,90]);vib=setInterval(function(){navigator.vibrate([70,130,90])},833)}
+  }
+  function up(){
+    hb.classList.remove('holding'); document.body.classList.remove('beat');
+    cancelAnimationFrame(raf); clearInterval(vib); if(navigator.vibrate) navigator.vibrate(0);
+    if(!done){prog=0;ring.style.strokeDashoffset=295.3}
+  }
+  hb.addEventListener('pointerdown',down);
+  ['pointerup','pointercancel','pointerleave'].forEach(function(ev){hb.addEventListener(ev,up)});
+  hb.addEventListener('contextmenu',function(e){e.preventDefault()});
+  hb.addEventListener('keydown',function(e){if((e.key===' '||e.key==='Enter')&&!e.repeat)down(e)});
+  hb.addEventListener('keyup',function(e){if(e.key===' '||e.key==='Enter')up()});
+})();
+</script>
+<script>
+/* ═══════════ the sky: one star per day, then they become a heart ═══════════ */
+(function(){
+  var cv=$('skyCanvas'), ctx=cv.getContext('2d'), sec=$('sky'), tip=$('tip');
+  var DAY=86400000, now=new Date();
+  var N=Math.floor((now-START)/DAY)+1;
+  var seed=25052025; function rnd(){seed=(seed*16807)%2147483647;return (seed-1)/2147483646}
+  var W,H,dpr,stars=[],joined=false,jt=0,sel=-1;
+
+  function heartPt(t){return {x:16*Math.pow(Math.sin(t),3), y:-(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t))}}
+  var poly=[]; for(var q=0;q<240;q++) poly.push(heartPt(q/240*Math.PI*2));
+  function inside(x,y){var c=false;for(var a=0,b=poly.length-1;a<poly.length;b=a++){var A=poly[a],B=poly[b];
+    if(((A.y>y)!==(B.y>y))&&(x<(B.x-A.x)*(y-A.y)/(B.y-A.y)+A.x))c=!c}return c}
+  var mi=0, months=Math.floor(N/30.44)+1;
+  for(var i=0;i<N;i++){
+    var d=new Date(START.getTime()+i*DAY);
+    var ist=new Date(d.getTime()+330*60000);
+    var month=ist.getUTCDate()===25, hp;
+    if(i===N-1){hp={x:0,y:-2}}
+    else if(month){hp=heartPt((mi++/months)*Math.PI*2+Math.PI/months)}
+    else if(rnd()<0.34){var o=heartPt(rnd()*Math.PI*2),j=0.96+rnd()*0.06;hp={x:o.x*j,y:o.y*j-0.1}}
+    else{do{hp={x:(rnd()*2-1)*16,y:-17+rnd()*30}}while(!inside(hp.x,hp.y))}
+    stars.push({i:i,date:ist,month:month,today:i===N-1,
+      sx:rnd(),sy:0.22+rnd()*0.7,hx:hp.x,hy:hp.y+2.5,
+      tw:rnd()*Math.PI*2,sz:month?2.6:(0.7+rnd()*1.1)});
+  }
+  function size(){
+    dpr=Math.min(2,window.devicePixelRatio||1); W=sec.clientWidth; H=sec.clientHeight;
+    cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  function pos(s){
+    var sc=Math.min(W,H*0.9)/40, cx=W/2, cy=H*0.54;
+    var ax=s.sx*W, ay=s.sy*H, bx=cx+s.hx*sc, by=cy+s.hy*sc;
+    var k=joined?ease(Math.min(1,jt)):0;
+    return {x:ax+(bx-ax)*k, y:ay+(by-ay)*k};
+  }
+  function ease(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2}
+  function draw(time){
+    ctx.clearRect(0,0,W,H);
+    if(joined&&jt<1) jt+=reduce?1:0.006;
+    for(var k=0;k<stars.length;k++){
+      var s=stars[k], p=pos(s), a=0.55+0.45*Math.sin(time/900+s.tw);
+      if(s.today){
+        var g=6+2*Math.sin(time/300);
+        ctx.fillStyle='rgba(224,66,79,.32)';ctx.beginPath();ctx.arc(p.x,p.y,g*2.4,0,7);ctx.fill();
+        ctx.fillStyle='#FF7A86';ctx.beginPath();ctx.arc(p.x,p.y,3.6,0,7);ctx.fill();
+      }else if(s.month){
+        ctx.fillStyle='rgba(239,201,131,'+(0.2*a)+')';ctx.beginPath();ctx.arc(p.x,p.y,8,0,7);ctx.fill();
+        ctx.fillStyle='rgba(241,213,142,'+(0.7+0.3*a)+')';ctx.beginPath();ctx.arc(p.x,p.y,s.sz,0,7);ctx.fill();
+      }else{
+        ctx.fillStyle='rgba(243,236,221,'+(0.25+0.6*a)+')';ctx.beginPath();ctx.arc(p.x,p.y,s.sz,0,7);ctx.fill();
+      }
+      if(k===sel){ctx.strokeStyle='#EFC983';ctx.lineWidth=1;ctx.beginPath();ctx.arc(p.x,p.y,9,0,7);ctx.stroke()}
+    }
+    requestAnimationFrame(draw);
+  }
+  function label(s){
+    var m=s.date.toLocaleString('en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).toLowerCase();
+    if(s.i===0) return 'day 1, '+m+'. you said yes.';
+    if(s.today) return 'day '+(s.i+1)+', today. still you.';
+    if(s.month){var mo=Math.round((s.date-START)/(DAY*30.44));return 'month '+mo+', '+m;}
+    return 'day '+(s.i+1)+', '+m;
+  }
+  cv.addEventListener('click',function(e){
+    var r=cv.getBoundingClientRect(), x=e.clientX-r.left, y=e.clientY-r.top, best=-1, bd=26*26;
+    stars.forEach(function(s,k){var p=pos(s),dd=(p.x-x)*(p.x-x)+(p.y-y)*(p.y-y);if(dd<bd){bd=dd;best=k}});
+    if(best<0){tip.classList.remove('on');sel=-1;return}
+    sel=best; var p=pos(stars[best]);
+    tip.textContent=label(stars[best]); tip.style.left=Math.max(90,Math.min(W-90,p.x))+'px'; tip.style.top=p.y+'px'; tip.classList.add('on');
+    clearTimeout(tip._t); tip._t=setTimeout(function(){tip.classList.remove('on');sel=-1},3200);
+  });
+  $('joinBtn').addEventListener('click',function(){
+    joined=true; jt=0; this.classList.add('done'); tip.classList.remove('on');
+    $('skyTitle').textContent=N+' days.';
+    $('skyOutText').textContent='every single one of them, you.';
+    $('skyOut').classList.add('on');
+  });
+  window.addEventListener('resize',size); size(); requestAnimationFrame(draw);
+})();
+</script>
+<script>
+/* ═══════════ colour of the night, changes as she reads ═══════════ */
+(function(){
+  var SKY={
+    hero:['#2E1036','#12071F','#C2507A66'],
+    diwan:['#2A0F33','#120822','#E9A89B4D'],
+    p1:['#33102F','#150A1F','#F29BB55C'],
+    p2:['#231440','#0E0A22','#9B6BE05C'],
+    p3:['#3A1614','#170A10','#F6A55A55'],
+    p4:['#111D4A','#090C24','#6F8CFF55'],
+    pulse:['#4A0B1C','#16040C','#FF3B5070'],
+    p5:['#380C22','#14060F','#FF6B7A55'],
+    p6:['#10143E','#060820','#F3D08A4D'],
+    p7:['#3A1C1E','#150B12','#FFB38A55'],
+    p8:['#361435','#150A1E','#F7B7C85C'],
+    p9:['#191838','#0A0A1A','#C9C3E640'],
+    p10:['#3D2412','#170C10','#F5C97A5C'],
+    letter:['#3A1224','#15081A','#E9A89B55'],
+    sky:['#0C0C2C','#04040E','#5A6CD040'],
+    finale:['#44182E','#1A0A1C','#FFB38A66']
+  };
+  var bd=document.getElementById('backdrop'), cur='';
+  function set(k){if(!SKY[k]||k===cur)return;cur=k;var c=SKY[k];
+    bd.style.setProperty('--bg1',c[0]);bd.style.setProperty('--bg2',c[1]);bd.style.setProperty('--glow',c[2]);
+    var m=document.querySelector('meta[name=theme-color]'); if(m) m.content=c[0];}
+  set('hero');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)set(e.target.dataset.bg)})},{rootMargin:'-45% 0px -45% 0px'});
+  document.querySelectorAll('[data-bg]').forEach(function(el){io.observe(el)});
+})();
+</script>
+</body>
+</html>
